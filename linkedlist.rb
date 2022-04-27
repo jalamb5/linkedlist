@@ -23,6 +23,42 @@ class LinkedList
     new_node = Node.new(value, @head)
     @head = new_node
   end
+
+  def size
+    counter = 0
+    if @head.nil?
+      counter
+    else
+      current = @head
+      while current
+        counter += 1
+        current = current.next_node
+      end
+      counter
+    end
+  end
+
+  def at(index)
+    counter = 0
+    current = @head
+    if index > self.size
+      "Index does not exist"
+    else
+      until counter == index
+        counter += 1
+        current = current.next_node
+      end
+    current
+    end
+  end
+
+  def pop
+    length = self.size
+    @tail = self.at(length - 2)
+    @tail.next_node = nil
+    self
+  end
+
 end
 
 class Node
@@ -38,7 +74,8 @@ list = LinkedList.new
 list.append(454)
 list.append(33)
 list.append(90)
-
+list.append(44)
 list.prepend(5)
 list.prepend(25)
-p list
+list.pop
+p list.pop
