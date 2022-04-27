@@ -7,20 +7,20 @@ class LinkedList
   end
 
   def append(value)
+    new_node = Node.new(value)
     if @head.nil?
-      @head, @tail = value, value
+      @head, @tail = new_node, new_node
     else
-      Node.new.value(value)
-      @tail = value
+      @tail = Node.new(value, @tail)
     end
   end
 
   def prepend(value)
+    new_node = Node.new(value)
     if @head.nil?
-      @head, @tail = value, value
+      @head, @tail = new_node, new_node
     else
-      Node.new.value(value, @head)
-      @head = value
+      @head = Node.new(value, @head)
     end
   end
 end
@@ -28,7 +28,7 @@ end
 class Node
   attr_accessor :data, :next_node
 
-  def value(data = nil, next_node = nil)
+  def initialize(data = nil, next_node = nil)
     @data = data
     @next_node = next_node
   end
@@ -37,7 +37,8 @@ end
 list = LinkedList.new
 list.append(454)
 list.append(33)
-p list
+list.append(90)
+
 list.prepend(5)
 list.prepend(25)
 p list
