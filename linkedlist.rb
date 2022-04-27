@@ -9,19 +9,19 @@ class LinkedList
   def append(value)
     new_node = Node.new(value)
     if @head.nil?
-      @head, @tail = new_node, new_node
-    else
-      @tail = Node.new(value, @tail)
+      @head = new_node
     end
+    if @tail.nil?
+      @tail = new_node
+    else
+      @tail.next_node = new_node
+    end
+    @tail = new_node
   end
 
   def prepend(value)
-    new_node = Node.new(value)
-    if @head.nil?
-      @head, @tail = new_node, new_node
-    else
-      @head = Node.new(value, @head)
-    end
+    new_node = Node.new(value, @head)
+    @head = new_node
   end
 end
 
