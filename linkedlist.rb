@@ -59,6 +59,35 @@ class LinkedList
     self
   end
 
+  def contains?(value)
+    current = @head
+    contents = []
+    while !current.nil?
+      contents << current.data
+      current = current.next_node
+    end
+    if contents.include?(value)
+      true
+    else
+      false
+    end
+  end
+
+  def find(value)
+    if self.contains?(value)
+      #return index
+      counter = 0
+      current = @head
+      until current.data == value
+        counter += 1
+        current = current.next_node
+      end
+      counter
+    else
+      nil
+    end
+  end
+
 end
 
 class Node
@@ -77,5 +106,5 @@ list.append(90)
 list.append(44)
 list.prepend(5)
 list.prepend(25)
-list.pop
-p list.pop
+list.contains?(99)
+p list.find(255)
