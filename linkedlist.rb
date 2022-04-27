@@ -88,6 +88,17 @@ class LinkedList
     end
   end
 
+  def to_s
+    string = ''
+    current = @head
+    while current.next_node
+      string << "( #{current.data} ) -> "
+      current = current.next_node
+    end
+    string << "nil"
+    string
+  end
+
 end
 
 class Node
@@ -104,7 +115,8 @@ list.append(454)
 list.append(33)
 list.append(90)
 list.append(44)
+list.append(99)
 list.prepend(5)
 list.prepend(25)
 list.contains?(99)
-p list.find(255)
+p list.to_s
