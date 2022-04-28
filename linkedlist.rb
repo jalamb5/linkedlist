@@ -99,6 +99,18 @@ class LinkedList
     string
   end
 
+  def insert_at(value, index)
+    current = self.at(index)
+    previous = self.at(index - 1)
+    new_node = Node.new(value, current)
+    previous.next_node = new_node
+  end
+
+  def remove_at(index)
+    previous = self.at(index - 1)
+    n = self.at(index + 1)
+    previous.next_node = n
+  end
 end
 
 class Node
@@ -119,4 +131,7 @@ list.append(99)
 list.prepend(5)
 list.prepend(25)
 list.contains?(99)
+list.insert_at(0, 2)
+list.remove_at(2)
+list.remove_at(2)
 p list.to_s
