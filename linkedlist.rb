@@ -53,8 +53,8 @@ class LinkedList
   end
 
   def pop
-    length = self.size
-    @tail = self.at(length - 2)
+    length = size
+    @tail = at(length - 2)
     @tail.next_node = nil
     self
   end
@@ -74,7 +74,7 @@ class LinkedList
   end
 
   def find(value)
-    if self.contains?(value)
+    if contains?(value)
       #return index
       counter = 0
       current = @head
@@ -100,15 +100,15 @@ class LinkedList
   end
 
   def insert_at(value, index)
-    current = self.at(index)
-    previous = self.at(index - 1)
+    current = at(index)
+    previous = at(index - 1)
     new_node = Node.new(value, current)
     previous.next_node = new_node
   end
 
   def remove_at(index)
-    previous = self.at(index - 1)
-    n = self.at(index + 1)
+    previous = at(index - 1)
+    n = at(index + 1)
     previous.next_node = n
   end
 end
